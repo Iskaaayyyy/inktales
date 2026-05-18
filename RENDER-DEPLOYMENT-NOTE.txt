@@ -1,0 +1,20 @@
+InkVerse / InkTales Latest Render-Ready Package
+
+This version includes the latest full-screen Manga/Comic reader fix and Render Node version fix.
+
+Render settings:
+Service Type: Web Service
+Build Command: npm install
+Start Command: npm start
+
+Environment Variables:
+NODE_ENV=production
+NODE_VERSION=22.16.0
+SESSION_SECRET=your-long-random-secret
+ENABLE_AI_IMAGES=false
+
+After deployment, open:
+/company.html for the InkVerse company page
+/app.html for the InkTales app
+
+If Render still fails, use Manual Deploy > Clear build cache & deploy.

@@ -1,0 +1,43 @@
+{
+  "name": "inkverse-inktales",
+  "version": "11.0.0",
+  "description": "InkVerse company profile and InkTales mobile app platform with team profile, company information, mission and vision, app download section, Android APK wrapper source, Gemini/Pollinations comic and manga generation, coins, monetization, reports, and admin operations.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "writing",
+    "manga",
+    "coins",
+    "creator-platform",
+    "inkverse",
+    "inktales",
+    "pwa",
+    "mobile-app",
+    "story-to-manga",
+    "text-accurate-conversion",
+    "gemini-api",
+    "pollinations-ai",
+    "ai-manga-generator",
+    "ai-comic-generator",
+    "motion-comic",
+    "company-profile",
+    "android-apk",
+    "apk-download",
+    "team-profile"
+  ],
+  "author": "InkVerse",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "uuid": "^11.0.5"
+  },
+  "engines": {
+    "node": "22.16.0"
+  }
+}

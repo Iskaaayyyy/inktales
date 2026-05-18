@@ -1,0 +1,6 @@
+Place the real built Android APK in this folder with this exact filename:
+
+InkTales.apk
+
+Then the website button will download it using this link:
+/downloads/InkTales.apk

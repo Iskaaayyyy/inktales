@@ -1,0 +1,11 @@
+InkTales UI direction
+
+This version keeps the web app layout shown in your screenshot:
+- Top header with InkTales brand, InkVerse button, and Logout button
+- Left profile card and sidebar navigation
+- Main content area with dark gradient cards
+- Wallet, Home, Write, Library, and Profile sections inside the same dashboard style
+- Mobile responsive behavior keeps the same visual identity, with the sidebar collapsing into bottom navigation on small screens
+
+Open the app at:
+http://localhost:3000/app.html

@@ -1,0 +1,60 @@
+InkVerse / InkTales APK Build Guide
+===================================
+
+Company: InkVerse
+Product/App: InkTales
+APK file name needed by the website: public/downloads/InkTales.apk
+
+IMPORTANT
+---------
+This project already includes an Android Studio WebView wrapper in:
+android/InkTales/
+
+The APK will open your deployed InkTales web app inside a mobile Android app. Because InkTales uses a Node/Express backend, deploy the web app first before building the APK.
+
+STEP 1: Deploy the web app
+--------------------------
+1. Upload this project to GitHub.
+2. Deploy it on Render or another Node hosting service.
+3. Make sure this link works in a browser:
+   https://YOUR-APP-LINK/app.html
+
+STEP 2: Set the APK app link
+----------------------------
+1. Open this file:
+   android/InkTales/app/src/main/res/values/strings.xml
+2. Replace:
+   https://your-deployed-inktales-link.com/app.html
+3. With your real deployed link, for example:
+   https://inkverse-inktales.onrender.com/app.html
+
+STEP 3: Build the APK in Android Studio
+---------------------------------------
+1. Open Android Studio.
+2. Choose Open Project.
+3. Select this folder:
+   android/InkTales/
+4. Wait for Gradle sync to finish.
+5. Click:
+   Build > Build Bundle(s) / APK(s) > Build APK(s)
+6. When finished, click Locate.
+7. Find the generated APK, usually here:
+   android/InkTales/app/build/outputs/apk/debug/app-debug.apk
+
+STEP 4: Make the APK downloadable on your website
+-------------------------------------------------
+1. Rename app-debug.apk to:
+   InkTales.apk
+2. Copy it into:
+   public/downloads/InkTales.apk
+3. Redeploy the Node web app.
+4. Open:
+   https://YOUR-APP-LINK/company.html#download
+5. Tap Download APK.
+
+NOTES
+-----
+- Do not put Gemini API keys, payment keys, or private tokens inside Android files.
+- Keep API keys in the backend .env file only.
+- For final release, Android Studio can also generate a signed APK using:
+  Build > Generate Signed Bundle / APK.

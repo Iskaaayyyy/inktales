@@ -1,0 +1,95 @@
+INKVERSE / INKTALES MOBILE APK-READY PROJECT
+
+WHAT WAS UPDATED IN THIS VERSION
+
+1. The old landing page was removed from the user flow.
+2. The main website now points directly to Company.html.
+3. Company.html remains the official InkVerse company profile page.
+4. InkTales app was redesigned to feel mobile-first instead of website-like.
+5. The normal user app now uses five main mobile tabs:
+   - Home
+   - Write
+   - Library
+   - Wallet
+   - Profile
+6. Home now shows published stories with mobile story cards, cover-style visuals, author, genre, reads, likes, and actions.
+7. Story cards now include buttons for:
+   - Read as Text
+   - Read Manga
+   - Read Comics
+8. Writing page now looks like a professional mobile notepad with top buttons for Save, Finish, Preview, Publish, Cancel, and Clear.
+9. Library now organizes drafts, saved reads, published works, and history visually.
+10. Wallet now includes coin balance, top-up, withdrawal, top-up history, withdrawal history, and payment methods such as GCash, Debit/Credit Card, and PayPal.
+11. Profile now includes username, verified/regular author status, description, followers/following, works count, and edit profile form.
+12. Android APK wrapper source is still included in android/InkTales.
+
+HOW TO RUN LOCALLY
+
+1. Extract the ZIP.
+2. Open the project folder in VS Code.
+3. Open Terminal in the project folder.
+4. Run:
+
+   npm install
+   npm run dev
+
+5. Open:
+
+   http://localhost:3000/company.html
+
+6. Open the InkTales mobile app:
+
+   http://localhost:3000/app.html
+
+MAIN PAGES
+
+- Company Profile: public/company.html
+- Main Redirect Page: public/index.html
+- InkTales Mobile App: public/app.html
+- Styles: public/css/style.css
+- App Logic: public/js/app.js
+- Backend: server.js
+
+DEMO LOGIN
+
+Admin account:
+Email: admin@inkverse.local
+Password: admin123
+
+You can also create a normal user account from the InkTales login page.
+
+HOW TO MAKE THE APK DOWNLOADABLE
+
+The Download APK button on Company.html points to:
+
+   public/downloads/InkTales.apk
+
+To make it work:
+
+1. Deploy the web app online first.
+2. Open android/InkTales in Android Studio.
+3. Open:
+
+   android/InkTales/app/src/main/res/values/strings.xml
+
+4. Replace the app_url value with your deployed app URL, for example:
+
+   https://your-app-name.onrender.com/app.html
+
+5. Build APK in Android Studio:
+
+   Build > Build Bundle(s) / APK(s) > Build APK(s)
+
+6. Rename the output APK to:
+
+   InkTales.apk
+
+7. Place it inside:
+
+   public/downloads/InkTales.apk
+
+8. Redeploy the website.
+
+After that, users can download the Android app from:
+
+   /company.html#download

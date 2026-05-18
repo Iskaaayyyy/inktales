@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>InkTales App</title>
+  <meta name="description" content="InkTales web app for reading, writing, wallet, library, profile, manga, and comics by InkVerse.">
+  <meta name="theme-color" content="#020712">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="InkTales">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="inktales-app exact-inktales-ui">
+  <nav class="mobile-app-header app-nav exact-hidden-header">
+    <a class="app-brand" href="/app.html" aria-label="InkTales home">
+      <img src="/assets/icon-192.png" alt="InkTales logo">
+      <span>InkTales</span>
+    </a>
+    <div class="app-header-actions">
+      <a class="mini-link" href="/company.html">InkVerse</a>
+      <button id="installAppBtn" class="secondary-btn tiny-action hidden">Install</button>
+      <button id="logoutBtn" class="danger-btn tiny-action hidden">Logout</button>
+    </div>
+  </nav>
+
+  <section id="authView" class="exact-login-screen">
+    <div class="exact-login-brand">
+      <div class="exact-ink-logo"><span>Ink</span><b>Tales</b></div>
+      <p>Read, Write, and<br>Transform Stories into Worlds.</p>
+      <div class="exact-feather-hero" aria-hidden="true"></div>
+    </div>
+
+    <div class="exact-login-card">
+      <h1>Welcome Back!</h1>
+      <p>Log in to continue your journey</p>
+      <div id="authNotice" class="notice hidden"></div>
+      <div class="exact-auth-form">
+        <input id="authName" autocomplete="name" placeholder="Username for new account">
+        <div class="exact-input-wrap"><span>✉</span><input id="authEmail" type="email" autocomplete="email" placeholder="Email or Username"></div>
+        <div class="exact-input-wrap"><span>▣</span><input id="authPassword" type="password" autocomplete="current-password" placeholder="Password"></div>
+        <a class="exact-forgot" href="#">Forgot Password?</a>
+        <button class="primary-btn full-btn exact-gradient-btn" id="loginBtn">Login</button>
+        <div class="exact-divider"><span></span><small>or continue with</small><span></span></div>
+        <button type="button" class="secondary-btn full-btn exact-social-btn">G&nbsp; Continue with Google</button>
+        <button type="button" class="secondary-btn full-btn exact-social-btn">&nbsp; Continue with Apple</button>
+        <p class="exact-signup">Don’t have an account? <button type="button" id="registerBtn">Sign up</button></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="appView" class="exact-app-shell hidden">
+    <aside class="exact-sidebar">
+      <a class="exact-side-brand" href="/app.html"><span class="exact-mark">⌁</span><strong><span>Ink</span>Tales</strong></a>
+      <div class="side-menu exact-side-menu" aria-label="InkTales navigation">
+        <button class="user-tab active" data-tab="reader"><span>⌂</span><small>Home</small></button>
+        <button class="user-tab" data-tab="create"><span>✎</span><small>Write</small></button>
+        <button class="user-tab" data-tab="library"><span>▥</span><small>Library</small></button>
+        <button class="user-tab" data-tab="wallet"><span>▣</span><small>Wallet</small></button>
+        <button class="user-tab" data-tab="profile"><span>♙</span><small>Profile</small></button>
+        <button class="admin-tab hidden" data-tab="admin"><span>◆</span><small>Admin</small></button>
+        <button class="admin-tab hidden" data-tab="adminUsers"><span>☻</span><small>Users</small></button>
+        <button class="admin-tab hidden" data-tab="adminTopups"><span>◈</span><small>Top Ups</small></button>
+        <button class="admin-tab hidden" data-tab="adminWithdrawals"><span>◇</span><small>Withdrawals</small></button>
+        <button class="admin-tab hidden" data-tab="adminStories"><span>▦</span><small>Stories</small></button>
+        <button class="admin-tab hidden" data-tab="adminMonetization"><span>✦</span><small>Monetization</small></button>
+        <button class="admin-tab hidden" data-tab="adminReports"><span>⚑</span><small>Reports</small></button>
+        <button class="admin-tab hidden" data-tab="adminTransactions"><span>⇄</span><small>Transactions</small></button>
+      </div>
+
+      <div class="exact-side-bottom">
+        <button class="exact-settings" type="button">⚙ Settings</button>
+        <button class="exact-settings" type="button">ⓘ Help</button>
+        <button class="exact-moon" type="button">☾</button>
+      </div>
+
+      <div class="exact-user-mini">
+        <div class="avatar-circle" id="profileInitial">U</div>
+        <div class="profile-main">
+          <strong id="profileName">User</strong>
+          <small id="profileEmail">Reader and Writer</small>
+          <small id="monetizationMini">Monetization: not_applied</small>
+        </div>
+        <div class="profile-balances">
+          <div class="coin-badge">🪙 <span id="coinCount">0</span></div>
+          <div class="coin-badge earnings-badge">💎 <span id="earningsCount">0</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="exact-main-panel">
+      <div id="appNotice" class="notice hidden"></div>
+
+      <section id="readerTab" class="tab-panel exact-page exact-home-page">
+        <div class="exact-page-topbar">
+          <div class="exact-search"><span>⌕</span><input id="storySearch" placeholder="Search stories, authors or genres..."></div>
+          <button class="exact-icon-btn" id="refreshMarketBtn" type="button">↻</button>
+          <button class="exact-icon-btn" type="button">🔔</button>
+          <div class="exact-mini-avatar" id="homeAvatar">U</div>
+        </div>
+        <div class="exact-title-row">
+          <div>
+            <h1>Welcome back, Writer! 👋</h1>
+            <p>Find stories, read in text mode, or open manga and comic versions.</p>
+          </div>
+        </div>
+        <h2 class="exact-section-title">Categories</h2>
+        <div class="genre-row exact-chip-row" aria-label="Story categories">
+          <span class="active">All</span><span>Romance</span><span>Fantasy</span><span>Action</span><span>Horror</span><span>Comedy</span><span>Drama</span><span>Manga</span><span>Comics</span>
+        </div>
+        <div id="publicStories" class="exact-home-feed"></div>
+      </section>
+
+      <section id="createTab" class="tab-panel hidden exact-page exact-write-page">
+        <div class="exact-writer-shell">
+          <div class="exact-writer-head">
+            <button class="exact-back-btn" data-open-tab="library" type="button">←</button>
+            <strong id="editorHeading">My New Story</strong>
+            <div class="exact-writer-status">✓ Saved</div>
+          </div>
+          <div class="writer-toolbar exact-writer-toolbar">
+            <button class="secondary-btn small-btn" id="saveStoryBtn">▣ Save</button>
+            <button class="secondary-btn small-btn" id="finishStoryBtn">◎ Finish</button>
+            <button class="secondary-btn small-btn" id="previewStoryBtn">◉ Preview</button>
+            <button class="secondary-btn small-btn" data-open-tab="library">▤ Publish</button>
+            <button class="secondary-btn small-btn hidden" id="cancelEditBtn">Cancel Edit</button>
+            <button class="secondary-btn small-btn" id="clearStoryBtn">⋯ More</button>
+          </div>
+          <div class="exact-editor-area">
+            <aside class="exact-chapter-list">
+              <small>Chapters</small>
+              <button class="active" type="button"><strong>Chapter 1</strong><span>The Beginning</span></button>
+              <button type="button"><strong>Chapter 2</strong><span>The Encounter</span></button>
+              <button type="button"><strong>Chapter 3</strong><span>The Truth</span></button>
+              <button class="exact-add-chapter" type="button">＋ Add Chapter</button>
+            </aside>
+            <div class="exact-editor-card">
+              <input id="editingStoryId" type="hidden">
+              <div class="exact-editor-meta">
+                <select id="storyGenre" aria-label="Genre"><option value="Fantasy">Fantasy</option><option value="Romance">Romance</option><option value="Action">Action</option><option value="Horror">Horror</option><option value="Comedy">Comedy</option><option value="Drama">Drama</option></select>
+                <input id="storyPrice" type="number" min="0" max="5000" value="0" aria-label="Coin Price">
+              </div>
+              <input id="storySummary" placeholder="Short story description or teaser">
+              <input id="storyTitle" class="title-input" placeholder="Chapter 1: The Beginning">
+              <textarea id="storyContent" class="notepad-editor" placeholder="Start writing your story here..."></textarea>
+              <div class="exact-format-bar"><span>B</span><span><i>I</i></span><span><u>U</u></span><span>☷</span><span>☰</span><span>▤</span><span>▧</span><span>▨</span><span>▣</span><span>🔗</span></div>
+              <div class="editor-status-row"><span id="wordCounter">0 words</span><span>Saved 2 minutes ago</span></div>
+              <button class="exact-floating-pen" type="button">✦</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="libraryTab" class="tab-panel hidden exact-page exact-library-page">
+        <div class="exact-page-topbar compact">
+          <h1>Library</h1>
+          <div class="exact-search"><span>⌕</span><input placeholder="Search in library..."></div>
+          <button class="exact-icon-btn" type="button">⌯</button>
+        </div>
+        <div class="library-tabs exact-chip-row"><span class="active">Drafts</span><span>Saved</span><span>Published</span><span>Reading History</span></div>
+        <div id="myStories" class="exact-list-feed"></div>
+      </section>
+
+      <section id="walletTab" class="tab-panel hidden exact-page exact-wallet-page">
+        <div class="exact-wallet-grid">
+          <div class="exact-wallet-panel">
+            <h1>Wallet</h1>
+            <div class="exact-wallet-card">
+              <div><small>My Coins</small><strong><span id="walletCoinMirror">0</span></strong></div>
+              <div class="exact-coin-stack" aria-hidden="true"></div>
+            </div>
+            <div class="exact-wallet-actions"><button class="primary-btn small-btn">Top Up</button><button class="primary-btn small-btn">Withdraw</button><button class="primary-btn small-btn">Send Coins</button></div>
+            <div class="exact-wallet-tabs"><span class="active">Top-up History</span><span>Withdrawal History</span><span>Usage History</span></div>
+            <div id="transactions" class="exact-transactions"></div>
+          </div>
+          <div class="exact-form-panel">
+            <h2>Top Up Coins</h2>
+            <p>Submit payment details. Coins are credited after admin approval.</p>
+            <label for="coinRequestAmount">Coins to Buy</label><input id="coinRequestAmount" type="number" min="10" value="100">
+            <label for="coinRequestMethod">Payment Method</label><select id="coinRequestMethod"><option>GCash</option><option>Debit/Credit Card</option><option>PayPal</option><option>Maya</option><option>Bank Transfer</option></select>
+            <label for="coinRequestReference">Reference Number</label><input id="coinRequestReference" placeholder="Receipt or payment reference">
+            <label for="coinRequestNote">Note</label><input id="coinRequestNote" placeholder="Optional note for admin">
+            <button class="primary-btn full-btn" id="requestCoinsBtn">Submit Top-Up</button>
+            <div class="exact-history-box"><h3>Top-Up Requests</h3><div id="coinRequests"></div></div>
+          </div>
+          <div class="exact-form-panel">
+            <h2>Withdraw Earnings</h2>
+            <p>Approved monetized writers can request creator payout withdrawal.</p>
+            <label for="withdrawAmount">Earned Coins to Withdraw</label><input id="withdrawAmount" type="number" min="50" value="50">
+            <label for="withdrawMethod">Payout Method</label><select id="withdrawMethod"><option>GCash</option><option>Debit/Credit Card</option><option>PayPal</option><option>Maya</option><option>Bank Transfer</option></select>
+            <label for="withdrawName">Account Name</label><input id="withdrawName" placeholder="Account holder name">
+            <label for="withdrawNumber">Account Number</label><input id="withdrawNumber" placeholder="Mobile number, card, bank account, or PayPal email">
+            <button class="primary-btn full-btn" id="requestWithdrawalBtn">Submit Withdrawal</button>
+            <div class="exact-history-box"><h3>Withdrawal Requests</h3><div id="withdrawalRequests"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profileTab" class="tab-panel hidden exact-page exact-profile-page">
+        <div class="exact-profile-card">
+          <button class="exact-profile-settings" type="button">⚙</button>
+          <div class="profile-big-avatar" id="profileBigInitial">U</div>
+          <div class="exact-profile-main">
+            <h1 id="profileDisplayName">John Doe</h1>
+            <div class="exact-verified-row"><span id="verifiedAuthorBadge" class="tag">Verified Author</span></div>
+            <p id="profileBioText">Dreamer, writer, creator.</p>
+          </div>
+          <div class="profile-stat-row exact-profile-stats">
+            <span><strong id="profileWorksCount">12</strong> Published Works</span>
+            <span><strong id="profileFollowersCount">1.2K</strong> Followers</span>
+            <span><strong id="profileFollowingCount">320</strong> Following</span>
+          </div>
+          <button class="secondary-btn full-btn">Edit Profile</button>
+          <div class="exact-profile-tabs"><span class="active">Works</span><span>About</span><span>Badges</span></div>
+          <div id="profileWorksList" class="exact-profile-works"></div>
+          <span id="profileStatusBadge" class="tag hidden">Active</span>
+        </div>
+        <div class="exact-edit-profile-panel">
+          <h2>Edit Profile</h2>
+          <label for="profileNameInput">Username</label><input id="profileNameInput" placeholder="Your username">
+          <label for="profileBioInput">Description</label><textarea id="profileBioInput" placeholder="Write a short author description"></textarea>
+          <button class="primary-btn full-btn" id="saveProfileBtn">Save Profile</button>
+          <button class="secondary-btn full-btn" data-open-tab="monetization">Verification / Monetization</button>
+        </div>
+      </section>
+
+      <section id="dashboardTab" class="tab-panel hidden exact-page">
+        <div class="app-top"><div><div class="kicker">Dashboard</div><h1>InkTales overview.</h1></div></div>
+        <div class="grid-3" id="dashboardStats"></div>
+      </section>
+
+      <section id="monetizationTab" class="tab-panel hidden exact-page">
+        <div class="app-top mobile-section-head"><div><div class="kicker">Creator Verification</div><h1>Apply when you meet the requirements.</h1></div><button class="secondary-btn" id="refreshMonetizationBtn">Refresh</button></div>
+        <div class="grid-2 mobile-payment-grid">
+          <div class="card"><h3>Eligibility</h3><div id="monetizationEligibility"></div></div>
+          <div class="card">
+            <h3>Application Form</h3>
+            <div class="form-grid">
+              <div><label for="monetizationPayoutName">Payout / Creator Name</label><input id="monetizationPayoutName" placeholder="Your payout or creator name"></div>
+              <div><label for="monetizationNote">Portfolio Note</label><textarea id="monetizationNote" placeholder="Tell the admin about your stories and content plans."></textarea></div>
+              <button class="primary-btn" id="applyMonetizationBtn">Apply for Monetization</button>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3"><h3>Application History</h3><div id="monetizationApplications"></div></div>
+      </section>
+
+      <section id="adminTab" class="tab-panel hidden exact-page">
+        <div class="app-top"><div><div class="kicker">Admin Overview</div><h1>InkTales platform operations.</h1></div><button class="secondary-btn" id="refreshAdminBtn">Refresh All</button></div>
+        <div class="grid-3" id="adminStats"></div>
+      </section>
+      <section id="adminUsersTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Manage users.</h1></div></div><div class="card"><div id="adminUsers"></div></div></section>
+      <section id="adminTopupsTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Approve or reject coin top ups.</h1></div></div><div class="card"><div id="adminCoinRequests"></div></div></section>
+      <section id="adminWithdrawalsTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Manage withdrawal requests.</h1></div></div><div class="card"><div id="adminWithdrawals"></div></div></section>
+      <section id="adminStoriesTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Moderate story library.</h1></div></div><div class="card"><div id="adminStories"></div></div></section>
+      <section id="adminMonetizationTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Review monetization applications.</h1></div></div><div class="card"><div id="adminMonetizationApplications"></div></div></section>
+      <section id="adminReportsTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Review reports.</h1></div></div><div class="card"><div id="adminReports"></div></div></section>
+      <section id="adminTransactionsTab" class="tab-panel hidden exact-page"><div class="app-top"><div><div class="kicker">Admin</div><h1>Transactions and platform fees.</h1></div></div><div class="card"><div id="adminTransactions"></div></div></section>
+    </main>
+  </section>
+
+  <div id="storyModeModal" class="story-mode-modal hidden" role="dialog" aria-modal="true" aria-label="Story reader">
+    <div class="story-mode-card exact-story-modal-card">
+      <button class="danger-btn small-btn modal-close" id="closeStoryModeBtn">Close</button>
+      <div id="storyModeContent"></div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
